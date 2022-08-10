@@ -1,0 +1,79 @@
+1. add file chooser implementation to save and load file
+File chooser untuk load:
+FileChooser chooser = new FileChooser();
+        File f = chooser.showOpenDialog(text1.getScene().getWindow());
+        Path p = Paths.get(f.toURI());
+        try {
+            String baru = "";
+            for (String something : Files.readAllLines(p)) {
+                baru += something + "\n";
+            }
+            text1.setText(baru);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+File chooser untuk save:
+FileChooser chooser = new FileChooser();
+        File f = chooser.showSaveDialog(text1.getScene().getWindow());
+        try {
+            String hasil = text1.getText();
+            Files.write(f.toPath(), hasil.getBytes());
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+        }
+
+2. add save and load 2 using java nio
+Sudah ada dalam code program
+
+3. add error handling for this application
+   - list all error scenario that potentially happen ?
+Kemungkinan error yang muncul:
+- bila textfield dari username atau komentar ada yang tidak terisi namun 
+user sudah menekan button add atau save untuk melakukan action.
+Cara mengatasinya bisa menggunakan alert bila ada textfield yang kosong.
+- bila user menekan button load comment saat isi comment masih kosong.
+Cara mengatasinya bisa dengan membuat button load comment disable bila user
+belum memasukkan komentar. Atau mungkin bisa dengan memberi alert bila isi komentar kosong.
+
+4. is it better to save data on plain text or json ? why ?
+Menurut saya lebih baik untuk menyimpan data dalam json karena json dapat menampung
+data berupa list.
+
+5. is there a better format to json to store data on plain text ?
+   name a couple of alternatives (min 2)
+Beberapa alternatif:
+- BSON, merupakan compressed version dari json yang memiliki ukuran data lebih kecil
+- enkripsi agar data lebih private
+- database agar kita bisa mengakses data json secara acak
+
+6. is it better to save data on file instead of a dedicated database ?
+   is there a scenario where saving data on file be better ?
+Menurut saya lebih baik untuk menyimpan data dalam database. Data yang tersimpan dalam database biasanya
+lebih terstruktur dan mudah dibaca, juga lebih mudah untuk diambil.
+Namun pada beberapa situasi memang lebih baik untuk menyimpan data dalam file, 
+misalnya saat data yang dimiliki mengandung bayak konten binary seperti gambar atau mp3.
+
+7. can you test if a specific file exist in a specified path with java ?
+   how ?
+Dengan menggunakan File.exists(). Jika File.exists() mengembalikan nilai true maka 
+file itu ada dalam directory kita.
+
+8  can you test if a specific  directory exist in a specified path ?
+   how ?
+Sama seperti mencari apakah ada file dalam suatu path, kita bisa menggunakan
+File.exist() juga untuk mencari apakah ada directory tertentu dalam path.
+
+9. can you delete or move file using java ? how ?
+Ya, java menyediakan methods untuk menghapus dan memindahkan file menggunakan program java.
+Untuk delete file, bisa menggunakan fungsi java.io.File.delete() atau
+java.nio.file.files.deleteifexists(Path p).
+Untuk move file, bisa menggunakan method move(Path, Path, CopyOption...).
+
+10. can you think of potential security problem when you allow java to freely
+   change file on your computer ? how do we prevent that ?
+Ya, misalnya bisa saja file kita menjadi hilang atau corrupt karena terlalu sering
+digunakan dan diubah. Untuk mengatasinya kita lebih baik sediakan back up
+untuk data-data kita terutama data penting. Misalnya dengan menyimpannya
+dalam github terlebih dahulu.

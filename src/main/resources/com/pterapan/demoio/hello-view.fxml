@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" prefHeight="483.0" prefWidth="436.0" spacing="20.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pterapan.demoio.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label fx:id="label1" text="Komentar :" />
+   <ListView fx:id="listKomentar" prefHeight="200.0" prefWidth="200.0" />
+   <Label fx:id="label11" prefHeight="17.0" prefWidth="393.0" text="User Name :" />
+   <TextField fx:id="txtUsername" />
+   <Label fx:id="label12" prefHeight="17.0" prefWidth="393.0" text="Komentarmu :" />
+   <TextField fx:id="txtKomentar" />
+   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <children>
+          <Button fx:id="addKomentar" onAction="#addKomentar" text="Add Comment" />
+         <Button fx:id="saveKomentar" onAction="#saveKomentar" text="Save Comment" />
+         <Button fx:id="loadKomentar" onAction="#loadKomentar" text="Load Comment" />
+      </children>
+   </HBox>
+   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <children>
+         <Button fx:id="saveKomentar2" onAction="#saveKomentarNio" text="Save Comment 2" />
+         <Button fx:id="loadKomentar2" onAction="#loadKomentarNio" text="Load Comment 2" />
+      </children>
+   </HBox>
+</VBox>
